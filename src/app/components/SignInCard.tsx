@@ -1,8 +1,15 @@
 "use client"
 
 import React from "react";
+import {authClient} from "@/src/lib/auth-client";
 
 const SignInCard = () => {
+
+    const signinWithGitHub = async ()=>await authClient.signIn.social({
+        callbackURL:"/home",
+        provider:"github",
+    });
+
     return (
         <div className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="mb-6">
@@ -14,11 +21,7 @@ const SignInCard = () => {
                 <button
                     type="button"
                     className="w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-50 active:bg-zinc-100"
-                    onClick={() => {
-                        // Replace this with your auth call, e.g.:
-                        // signIn("github")
-                        // or router.push("/api/auth/signin/github")
-                    }}
+                    onClick={signinWithGitHub}
                 >
                     Continue with GitHub
                 </button>

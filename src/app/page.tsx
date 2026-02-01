@@ -1,8 +1,7 @@
-'use client'
-
 import React from 'react'
-import {redirect, useRouter} from "next/navigation";
+import {redirect} from "next/navigation";
 import {getSession} from "@/src/lib/auth";
+import Link from "next/dist/client/link";
 
 const Page = async () => {
 
@@ -10,16 +9,11 @@ const Page = async () => {
 
     if(session) redirect("/home");
 
-    const router = useRouter();
-
-    const navigateToSignIn= ()=>{
-        router.push("/sign-in");
-    }
 
     return (
         <>
             <div>
-                <button onClick={navigateToSignIn} className="p-5 border-black border-2 m-3 rounded-md hover:cursor-pointer">Sign In</button>
+                <Link href="/sign-in">Sign In</Link>
             </div>
         </>
     )
